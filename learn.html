@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khushal - App Developer Portfolio</title>
+    <style>
+        /* Global Resets and Base Styles */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            /* Base font size */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            /* Fallback font */
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f7f6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container for centering content */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        /* Headings */
+        h1,
+        h2,
+        h3 {
+            margin-bottom: 0.75em;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            /* 40px */
+        }
+
+        h2 {
+            font-size: 2rem;
+            /* 32px */
+            text-align: center;
+            color: #2c3e50;
+            /* Darker blue */
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            /* 24px */
+            color: #34495e;
+            /* Slightly lighter blue */
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: #555;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db;
+            /* Standard link blue */
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #2980b9;
+            /* Darker blue on hover */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            /* Default rounded corners for images */
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #555;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+            background-color: #f0f0f0;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            /* Hidden by default, shown on mobile */
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-button .icon-svg {
+            /* For SVG icon styling */
+            width: 28px;
+            height: 28px;
+            fill: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 100px;
+            /* Adjust for fixed navbar height */
+            padding-bottom: 60px;
+            background: linear-gradient(to right, #4A00E0, #8E2DE2);
+            /* Purple gradient */
+            color: #ffffff;
+            text-align: center;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem auto;
+            border: 4px solid #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #e0e0e0;
+            font-weight: 400;
+        }
+
+        .hero .details {
+            font-size: 1.1rem;
+            color: #d0d0d0;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .hero .details .icon-svg {
+            width: 20px;
+            height: 20px;
+            fill: #d0d0d0;
+            vertical-align: middle;
+        }
+
+        .hero-button {
+            background-color: #ffffff;
+            color: #4A00E0;
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            /* Pill shape */
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-button .icon-svg {
+            width: 18px;
+            height: 18px;
+            fill: #4A00E0;
+            transition: fill 0.3s ease;
+        }
+
+        .hero-button:hover {
+            background-color: #f0f0f0;
+            color: #3a00b3;
+            transform: translateY(-2px);
+        }
+
+        .hero-button:hover .icon-svg {
+            fill: #3a00b3;
+        }
+
+
+        /* General Section Styling */
+        .section {
+            padding: 60px 0;
+            margin: 30px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.bg-light {
+            background-color: #f9f9f9;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .about-text {
+            text-align: left;
+            max-width: 700px;
+            /* Limit text width for readability */
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .about-image-container {
+            max-width: 300px;
+        }
+
+        .about-image-container img {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            /* Single column by default */
+            gap: 30px;
+        }
+
+        .skill-card {
+            background-color: #ffffff;
+            /* White background for cards if section is light */
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .skill-card-header .icon-svg {
+            width: 32px;
+            height: 32px;
+            fill: #3498db;
+            margin-right: 15px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 0;
+            /* Reset margin from global h3 */
+        }
+
+        .skill-card p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .skill-card ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        .skill-card ul li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .skill-card ul li strong {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            /* Single column by default */
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: #f9f9f9;
+            /* Light background for project cards */
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            /* Fixed height for consistency */
+            object-fit: cover;
+            margin-bottom: 15px;
+            border-radius: 6px;
+        }
+
+        .project-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .project-links a {
+            margin-right: 15px;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #2c3e50;
+            /* Dark blue background */
+            color: #ecf0f1;
+            /* Light text color */
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: #ffffff;
+        }
+
+        .contact-section p {
+            color: #bdc3c7;
+            /* Lighter gray for paragraph */
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contact-links a {
+            color: #ffffff;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .contact-links a:hover {
+            color: #3498db;
+            /* Blue on hover */
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-links .icon-svg {
+            width: 22px;
+            height: 22px;
+            fill: #ffffff;
+            transition: fill 0.3s ease;
+        }
+
+        .contact-links a:hover .icon-svg {
+            fill: #3498db;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1f2b38;
+            /* Even darker blue */
+            color: #bdc3c7;
+            /* Light gray */
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.9rem;
+            border-top-left-radius: 8px;
+            /* Match contact section if it's directly above */
+            border-top-right-radius: 8px;
+        }
+
+        .footer p {
+            margin-bottom: 0.25em;
+            color: #bdc3c7;
+        }
+
+        .footer .built-with {
+            font-size: 0.8rem;
+            color: #95a5a6;
+        }
+
+        /* Responsive Design - Media Queries */
+        @media (min-width: 768px) {
+
+            /* Tablets and larger */
+            h1 {
+                font-size: 3rem;
+                /* 48px */
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.75rem;
+            }
+
+            .mobile-menu-button {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex;
+                /* Ensure it's flex on desktop */
+            }
+
+            .about-content {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            .about-text {
+                flex: 2;
+                /* Takes 2/3 of space */
+            }
+
+            .about-image-container {
+                flex: 1;
+                /* Takes 1/3 of space */
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                /* Two columns for skills */
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                /* Two columns for projects */
+            }
+
+            .contact-links {
+                flex-direction: row;
+                justify-content: center;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            /* Mobile devices */
+            .nav-links {
+                display: none;
+                /* Hide links by default on mobile */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                /* Position below navbar */
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                padding: 1rem 0;
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+
+            .nav-links.active {
+                display: flex;
+                /* Show when active */
+            }
+
+            .nav-links a {
+                text-align: center;
+                padding: 0.75rem 1rem;
+                width: 100%;
+            }
+
+            .nav-links a:hover {
+                background-color: #f0f0f0;
+            }
+
+            .mobile-menu-button {
+                display: block;
+            }
+
+            .hero {
+                padding-top: 80px;
+                padding-bottom: 40px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .hero .details {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Inline SVG Icon Base Style */
+        .icon-svg {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="nav-brand">Khushal</a>
+            <div class="nav-links" id="main-nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="mobile-menu-button" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 6h16M4 12h16M4 18h16" stroke="#333" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <div class="container">
+            <img src="https://placehold.co/150x150/FFFFFF/4A00E0?text=K" alt="Khushal Profile Picture Placeholder"
+                class="hero-profile-img">
+            <h1>Hi, I'm Khushal</h1>
+            <p class="subtitle">Aspiring Web Developer</p>
+            <p class="details">
+                <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+                2025 Graduate
+                <span style="margin: 0 0.5em;">|</span>
+                <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                    <circle cx="12" cy="10" r="3" />
+                </svg>
+                Udaipur, India
+            </p>
+            <a href="#contact" class="hero-button">
+                Get In Touch
+                <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13" />
+                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Hello! I'm Khushal, a passionate and driven student based in Udaipur, expecting to graduate in
+                        2025. I have a strong interest in web development, with hands-on experience in building
+                        responsive and dynamic websites using HTML, CSS, JavaScript, and modern frameworks.</p>
+
+                    <p>
+                        I enjoy turning complex problems into elegant and user-friendly mobile solutions. I'm constantly
+                        learning and exploring new technologies within the Android ecosystem to enhance my skills.
+                    </p>
+                    <p>
+                        Currently seeking opportunities to apply my skills in a real-world setting and contribute to
+                        exciting app development projects. Let's connect!
+                    </p>
+                </div>
+                <div class="about-image-container">
+                    <img src="https://placehold.co/300x300/D1C4E9/4A00E0?text=Developer"
+                        alt="Developer Illustration Placeholder" class="about-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section bg-light">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                    <!-- <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="12" rx="2" ry="2"></rect>
+                        <line x1="7" y1="19" x2="17" y2="19"></line>
+                        <line x1="12" y1="15" x2="12" y2="19"></line>
+                    </svg> -->
+                        <h3>Web Development</h3>
+                    </div>
+                    <p>Building responsive and interactive web applications with a focus on clean code and user experience.</p>
+                    <ul>
+                        <li><strong>HTML, CSS, JavaScript:</strong> Core technologies for structuring, styling, and adding interactivity to web pages.</li>
+                        <li><strong>Responsive Design: </strong>Ensuring websites work seamlessly across devices using media queries and flexible layouts.</li>
+                        <li><strong>Basic UI/UX Principles:</strong> Designing intuitive and user-centered interfaces.</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <!-- <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6" />
+                            <polyline points="8 6 2 12 8 18" />
+                        </svg> -->
+                        <h3>Other Technical Skills</h3>
+                    </div>
+                    <p>Familiarity with related technologies and concepts.</p>
+                    <ul>
+                        <li><strong>Java:</strong> Core and android-specific</li>
+                        <li><strong>C/C++:</strong> Basic understanding</li>
+                        <li>Object-Oriented Programming (OOP)</li>
+                        <li>Problem Solving</li>
+                        <li><strong>Version Control (Git & GitHub):</strong> For source code management and collaboration.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>Projects</h2>
+            <p style="text-align:center; max-width: 600px; margin-left:auto; margin-right:auto;">Here are some of the
+                projects I've worked on. (Replace placeholders below)</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/E0E7FF/4F46E5?text=Project+1" alt="Project 1 Placeholder">
+                    <h3>Project Title 1</h3>
+                    <p>Brief description of the project, the problem it solves, and the technologies used (e.g., Java,
+                        Android SDK).</p>
+                    <div class="project-links">
+                        <a href="#">View Code</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/EDE9FE/6D28D9?text=Project+2" alt="Project 2 Placeholder">
+                    <h3>Project Title 2</h3>
+                    <p>Brief description of another project, highlighting key features and your role.</p>
+                    <div class="project-links">
+                        <a href="#">View Code </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>
+                I'm open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel
+                free to reach out!
+            </p>
+            <div class="contact-links">
+                <a href="mailto:khushal@example.com">
+                    <!-- <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg> -->
+                    <img src="media/gmail-logo.jpg" height="24" width="24">
+                    user25@example.com
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+                    <!-- <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg> -->
+                    <img src="media/LinkedIn_logo.png" height="24" width="24">
+                    LinkedIn
+                </a>
+                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+                    <!-- <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                    </svg> -->
+                    <img src="media/github_logo.png" height="24" width="24">
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy;<span id="current-year"></span> All rights reserved.</p>
+            <p class="built-with">Built with HTML, CSS & JavaScript</p>
+        </div>
+    </footer>
+
+    <script>
+        // Immediately force scroll to top
+        window.scrollTo(0, 0);
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Disable smooth scrolling initially
+        document.documentElement.style.scrollBehavior = 'auto';
+
+        // Simple Intersection Observer for section animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Force scroll to top again
+            window.scrollTo(0, 0);
+
+            // Prevent automatic scrolling
+            history.scrollRestoration = 'manual';
+
+            // Disable any hash-based scrolling
+            if (window.location.hash) {
+                window.location.hash = '';
+            }
+
+            // Section animations with a delay
+            setTimeout(() => {
+                const sections = document.querySelectorAll('.section');
+                const options = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1
+                };
+
+                const observer = new IntersectionObserver((entries, observerInstance) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, options);
+
+                sections.forEach(section => {
+                    observer.observe(section);
+                });
+
+                // Re-enable smooth scrolling after everything is loaded
+                document.documentElement.style.scrollBehavior = 'smooth';
+            }, 300);
+
+            // Mobile Menu Toggle
+            const menuButton = document.getElementById('mobile-menu-toggle');
+            const navLinks = document.getElementById('main-nav-links');
+
+            if (menuButton && navLinks) {
+                menuButton.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    const isExpanded = navLinks.classList.contains('active');
+                    menuButton.setAttribute('aria-expanded', isExpanded);
+                    // Optional: Change menu icon (e.g., to an 'X')
+                    if (isExpanded) {
+                        menuButton.innerHTML = '<svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18 6L6 18M6 6l12 12" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                    } else {
+                        menuButton.innerHTML = '<svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h16M4 18h16" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                    }
+                });
+
+                // Close mobile menu when a link is clicked
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                            menuButton.setAttribute('aria-expanded', 'false');
+                            menuButton.innerHTML = '<svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h16M4 18h16" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                        }
+                    });
+                });
+            }
+        });
+
+        // Add another scroll to top after a short delay
+        setTimeout(() => {
+            window.scrollTo(0, 0);
+        }, 50);
+    </script>
+
+</body>
+
+</html>
