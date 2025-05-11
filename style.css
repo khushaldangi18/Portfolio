@@ -22,7 +22,7 @@ body {
      -moz-osx-font-smoothing: grayscale;
 }
 
-/* Container for centering content */
+/*For centering content*/
 .container {
      width: 90%;
      max-width: 1100px;
